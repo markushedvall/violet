@@ -12,7 +12,7 @@ jobs:
     - name: Install Conan
       run: |
           pip install conan
-          conan profile update settings.compiler.libcxx=libstdc++11 default
+          conan profile new default --detect
 
     - name: Create conan package
       run: conan create .
