@@ -1,18 +1,17 @@
 name: Ubuntu
 
-on:
-  push:
-    branches:
-      - master
-  pull_request:
-    branches:
-      - master
+on: [push, pull_request]
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
+    - uses: actions/setup-python@v1
 
-    - name: create
+    - name: Install Conan
+      run: |
+          pip install conan
+
+    - name: Create
       run: conan create .
