@@ -1,5 +1,7 @@
+#include <iostream>
+
 #include <violet/violet.h>
 
 int main() {
-  violet::hello();
+  std::cout << violet::hello() << std::endl;
 }

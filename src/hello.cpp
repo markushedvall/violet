@@ -1,11 +1,9 @@
-#include <iostream>
-
 #include <violet/violet.h>
 
 namespace violet {
 
-void hello() {
-  std::cout << "Hello, World!" << std::endl;
+std::string hello() {
+  return "Hello, World!";
 }
 
 } // namespace violet
