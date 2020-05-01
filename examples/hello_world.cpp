@@ -7,12 +7,16 @@ namespace {
 using violet::App;
 using violet::LogLevel;
 
-class TestPackage final : public App {
+class HelloWorld final : public App {
 public:
-  void tick() override {
-    std::cout << "Tick! Exiting..." << std::endl;
-    exit(0);
+  HelloWorld() {
+    std::cout << "Hello, World!" << std::endl;
   }
+
+  void tick() override {
+    // Do nothing
+  }
+
 };
 
 void onLog(LogLevel level, const char* msg) {
@@ -24,5 +28,5 @@ void onLog(LogLevel level, const char* msg) {
 } // namespace
 
 violet::AppConf violet::config() {
-  return {violet::AppFactory<TestPackage>(), onLog};
+  return {violet::AppFactory<HelloWorld>(), onLog};
 }

@@ -1,12 +1,7 @@
 #ifndef VIOLET_VIOLET_H
 #define VIOLET_VIOLET_H
 
-#include <string>
-
-namespace violet {
-
-std::string hello();
-
-} // namespace violet
+#include <violet/app.h>
+#include <violet/log.h>
 
 #endif // VIOLET_VIOLET_H

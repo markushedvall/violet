@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 3.12)
 project(violet LANGUAGES CXX)
 
+option(VIOLET_EXAMPLES "Build the violet examples" ON)
 option(VIOLET_TEST "Build the Violet tests" ON)
 option(VIOLET_FORMAT "Check the code format with clang-format" ${VIOLET_TEST})
 option(VIOLET_LINT "Lint the code with clang-tidy" ${VIOLET_TEST})
@@ -32,10 +33,13 @@ else()
 endif()
 
 add_library(violet
-  src/violet/hello.cpp
+  src/violet/app_glfw.cpp
+  src/violet/logger.cpp
 )
 
 target_compile_features(violet PUBLIC cxx_std_17)
+
+target_link_libraries(${PROJECT_NAME} PUBLIC CONAN_PKG::glfw)
 
 target_include_directories(violet
   PUBLIC
@@ -81,4 +85,8 @@ endif()
 if(VIOLET_TEST)
   enable_testing()
   add_subdirectory(tests)
+endif()
+
+if (VIOLET_EXAMPLES)
+  add_subdirectory(examples)
 endif()
