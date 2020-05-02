@@ -12,7 +12,7 @@ max_line_length = 100
 indent_size = 2
 
 [CMakeLists.txt]
-indent_size = 8
+indent_size = 4
 
 [*.{py}]
 indent_size = 4
