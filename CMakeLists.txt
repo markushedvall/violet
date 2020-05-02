@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.1)
 project(violet LANGUAGES CXX)
 
 include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
-conan_basic_setup()
+conan_basic_setup(TARGETS)
 
 add_library(${PROJECT_NAME} src/hello.cpp)
 
