@@ -14,14 +14,28 @@ class VioletConan(ConanFile):
     generators = "cmake"
     exports_sources = "src/*", "include/*", "CMakeLists.txt"
 
+    def _build_tests(self):
+        return self.develop and tools.get_env("CONAN_RUN_TESTS", True)
+
     def config_options(self):
         if self.settings.os == "Windows":
             del self.options.fPIC
 
+    def build_requirements(self):
+        if self._build_tests():
+            self.build_requires("doctest/2.3.7")
+
+    def imports(self):
+        self.copy("*/doctest.cmake", keep_path =False)
+        self.copy("*/doctestAddTests.cmake", keep_path =False)
+
     def build(self):
         cmake = CMake(self)
+        cmake.definitions["VIOLET_BUILD_TESTS"] = self._build_tests()
         cmake.configure()
         cmake.build()
+        if self._build_tests():
+            cmake.test()
 
     def package(self):
         self.copy("*.h", dst="include", src="include")
