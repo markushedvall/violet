@@ -6,7 +6,7 @@ option(VIOLET_BUILD_TESTS "Build the Violet tests" ON)
 include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
 conan_basic_setup(TARGETS)
 
-add_library(${PROJECT_NAME} src/hello.cpp)
+add_library(${PROJECT_NAME} src/violet/hello.cpp)
 
 set_target_properties(${PROJECT_NAME} PROPERTIES CXX_STANDARD 11)
 
