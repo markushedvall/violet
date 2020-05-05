@@ -13,5 +13,6 @@ set_target_properties(${PROJECT_NAME} PROPERTIES CXX_STANDARD 11)
 target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_SOURCE_DIR}/include)
 
 if (VIOLET_BUILD_TESTS)
+    enable_testing()
     add_subdirectory(tests)
 endif()
