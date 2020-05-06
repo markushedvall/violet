@@ -1,3 +1,5 @@
+#include <ostream> // Included for clang bug https://bugs.llvm.org/show_bug.cgi?id=41563
+
 #include <doctest/doctest.h>
 
 #include <violet/violet.h>
