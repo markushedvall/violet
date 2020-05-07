@@ -15,7 +15,7 @@ class VioletConan(ConanFile):
     exports_sources = "src/*", "include/*", "CMakeLists.txt", "tests/*"
 
     def _build_tests(self):
-        return self.develop and tools.get_env("CONAN_RUN_TESTS", True)
+        return tools.get_env("CONAN_RUN_TESTS", self.develop)
 
     def config_options(self):
         if self.settings.os == "Windows":

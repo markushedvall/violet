@@ -3,8 +3,6 @@ project(violet LANGUAGES CXX)
 
 option(VIOLET_BUILD_TESTS "Build the Violet tests" ON)
 
-set(CMAKE_CXX_STANDARD 11)
-
 include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
 conan_basic_setup(TARGETS)
 

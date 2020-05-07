@@ -1,4 +1,4 @@
-#include <ostream> // Included for clang bug https://bugs.llvm.org/show_bug.cgi?id=41563
+#include <ostream> // Included for libc++ bug https://bugs.llvm.org/show_bug.cgi?id=41563
 
 #include <doctest/doctest.h>
 
