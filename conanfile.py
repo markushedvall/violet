@@ -12,7 +12,7 @@ class VioletConan(ConanFile):
     options = {"shared": [True, False], "fPIC": [True, False]}
     default_options = {"shared": False, "fPIC": True}
     generators = "cmake"
-    exports_sources = "src/*", "include/*", "CMakeLists.txt", "tests/*"
+    exports_sources = "CMakeLists.txt", "LICENSE", "src/*", "include/*", "tests/*"
 
     def _build_tests(self):
         return tools.get_env("CONAN_RUN_TESTS", self.develop)
@@ -38,6 +38,7 @@ class VioletConan(ConanFile):
             cmake.test()
 
     def package(self):
+        self.copy("LICENSE", dst="licenses")
         self.copy("*.h", dst="include", src="include")
         self.copy("*violet.lib", dst="lib", keep_path=False)
         self.copy("*.dll", dst="bin", keep_path=False)
