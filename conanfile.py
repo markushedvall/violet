@@ -26,8 +26,9 @@ class VioletConan(ConanFile):
             self.build_requires("doctest/2.3.7")
 
     def imports(self):
-        self.copy("*/doctest.cmake", keep_path =False)
-        self.copy("*/doctestAddTests.cmake", keep_path =False)
+        if self._build_tests():
+            self.copy("*/doctest.cmake", keep_path =False)
+            self.copy("*/doctestAddTests.cmake", keep_path =False)
 
     def build(self):
         cmake = CMake(self)
