@@ -17,6 +17,12 @@ jobs:
     - name: Install clang-format
       run: brew install clang-format
 
+    - name: clang-format version
+      run: clang-format --version
+
+    - name: clang-format help
+      run: clang-format --help
+
     - name: Configure
       run: cmake -B build
 
