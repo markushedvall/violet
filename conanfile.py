@@ -12,31 +12,26 @@ class VioletConan(ConanFile):
     options = {"shared": [True, False], "fPIC": [True, False]}
     default_options = {"shared": False, "fPIC": True}
     generators = "cmake"
-    exports_sources = "CMakeLists.txt", "LICENSE", "src/*", "include/*", "tests/*", "tools/*", ".clang-format"
-
-    def _build_tests(self):
-        return tools.get_env("CONAN_RUN_TESTS", self.develop)
+    exports_sources = "CMakeLists.txt", "LICENSE", "src/*", "include/*"
 
     def config_options(self):
         if self.settings.os == "Windows":
             del self.options.fPIC
 
     def build_requirements(self):
-        if self._build_tests():
+        if self.develop:
             self.build_requires("doctest/2.3.7")
 
     def imports(self):
-        if self._build_tests():
+        if self.develop:
             self.copy("*/doctest.cmake", keep_path =False)
             self.copy("*/doctestAddTests.cmake", keep_path =False)
 
     def build(self):
         cmake = CMake(self)
-        cmake.definitions["VIOLET_BUILD_TESTS"] = self._build_tests()
+        cmake.definitions["VIOLET_BUILD_TESTS"] = False
         cmake.configure()
         cmake.build()
-        if self._build_tests():
-            cmake.test()
 
     def package(self):
         self.copy("LICENSE", dst="licenses")

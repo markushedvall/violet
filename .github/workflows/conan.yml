@@ -1,4 +1,4 @@
-name: macOS
+name: Conan
 
 on: [push]
 
@@ -14,13 +14,5 @@ jobs:
           pip install conan
           conan profile new default --detect
 
-    - name: Configure
-      run: cmake -B build
-
-    - name: Build
-      run: cmake --build build
-
-    - name: Test
-      run: |
-          cd build
-          ctest
+    - name: Create conan package
+      run: conan create .

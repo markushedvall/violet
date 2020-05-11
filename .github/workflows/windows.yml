@@ -9,16 +9,18 @@ jobs:
     - uses: actions/checkout@v1
     - uses: actions/setup-python@v1
 
-    - name: Upgrade pip
-      run: pip install --upgrade pip
-
     - name: Install Conan
       run: |
           pip install conan
           conan profile new default --detect
 
-    - name: Install clang-format
-      run: pip install clang-format
+    - name: Configure
+      run: cmake -B build
 
-    - name: Create conan package
-      run: conan create .
+    - name: Build
+      run: cmake --build build
+
+    - name: Test
+      run: |
+          cd build
+          ctest

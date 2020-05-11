@@ -1,4 +1,4 @@
-name: macOS
+name: Format
 
 on: [push]
 
@@ -14,13 +14,11 @@ jobs:
           pip install conan
           conan profile new default --detect
 
+    - name: Install clang-format
+      run: brew install clang-format
+
     - name: Configure
       run: cmake -B build
 
-    - name: Build
-      run: cmake --build build
-
-    - name: Test
-      run: |
-          cd build
-          ctest
+    - name: Check format
+      run: cmake --build build --target check-format
