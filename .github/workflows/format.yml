@@ -14,19 +14,11 @@ jobs:
           pip install conan
           conan profile new default --detect
 
-    - name: Brew
-      run: |
-          brew update
-          brew upgrade
+    - name: Update Homebrew taps
+      run: brew update
 
     - name: Install clang-format
       run: brew install clang-format
-
-    - name: clang-format version
-      run: clang-format --version
-
-    - name: clang-format help
-      run: clang-format --help
 
     - name: Configure
       run: cmake -B build
