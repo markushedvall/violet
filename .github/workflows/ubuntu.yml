@@ -15,5 +15,8 @@ jobs:
           conan profile new default --detect
           conan profile update settings.compiler.libcxx=libstdc++11 default
 
+    - name: Install clang-format
+      run: pip install clang-format
+
     - name: Create conan package
       run: conan create .

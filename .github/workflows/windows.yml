@@ -14,5 +14,8 @@ jobs:
           pip install conan
           conan profile new default --detect
 
+    - name: Install clang-format
+      run: pip install clang-format
+
     - name: Create conan package
       run: conan create .
