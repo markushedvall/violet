@@ -19,11 +19,11 @@ class VioletConan(ConanFile):
             del self.options.fPIC
 
     def build_requirements(self):
-        if self.develop:
+        if not self.in_local_cache:
             self.build_requires("doctest/2.3.7")
 
     def imports(self):
-        if self.develop:
+        if not self.in_local_cache:
             self.copy("*/doctest.cmake", keep_path =False)
             self.copy("*/doctestAddTests.cmake", keep_path =False)
 
