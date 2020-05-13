@@ -1,6 +1,5 @@
 add_executable(violet_test
   main.cpp
-  ${PROJECT_SOURCE_DIR}/src/violet/hello.test.cpp
 )
 
 find_package(Catch2 CONFIG REQUIRED)
