@@ -1,6 +1,6 @@
 add_executable(hello_world hello_world.cpp)
 
-set_target_properties(violet_test PROPERTIES
+set_target_properties(hello_world PROPERTIES
   CXX_STANDARD 11
   CXX_STANDARD_REQUIRED YES
 )
