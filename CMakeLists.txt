@@ -39,7 +39,7 @@ add_library(violet
 
 target_compile_features(violet PUBLIC cxx_std_17)
 
-target_link_libraries(${PROJECT_NAME} PUBLIC CONAN_PKG::glfw)
+target_link_libraries(violet PUBLIC CONAN_PKG::glfw)
 
 target_include_directories(violet
   PUBLIC
