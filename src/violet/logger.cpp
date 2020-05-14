@@ -32,4 +32,4 @@ void Logger::critical(const char* msg) {
   log_func_(LogLevel::critical, msg);
 }
 
-}
+} // namespace violet

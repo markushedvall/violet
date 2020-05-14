@@ -3,8 +3,8 @@
 
 #include <violet/log.h>
 
-#include <memory>
 #include <functional>
+#include <memory>
 #include <type_traits>
 
 namespace violet {
@@ -16,7 +16,6 @@ public:
 
 protected:
   App() = default;
-
 };
 
 struct AppConf {

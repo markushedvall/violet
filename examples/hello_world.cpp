@@ -16,7 +16,6 @@ public:
   void tick() override {
     // Do nothing
   }
-
 };
 
 void onLog(LogLevel level, const char* msg) {
