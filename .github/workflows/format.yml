@@ -21,7 +21,7 @@ jobs:
       run: brew install clang-format
 
     - name: Configure
-      run: cmake -B build
+      run: cmake -B build -DVIOLET_CONAN_INSTALL=OFF
 
     - name: Check format
       run: cmake --build build --target check-format
