@@ -2,18 +2,17 @@ cmake_minimum_required(VERSION 3.1.2)
 project(violet LANGUAGES CXX)
 
 option(VIOLET_BUILD_TESTS "Build the Violet tests" ON)
-option(VIOLET_CONAN_INSTALL "Run conan install, installing dependencies" ON)
+option(VIOLET_BUILD_WITH_COVERAGE "Build Violet with coverage on" OFF)
 option(VIOLET_CHECK_FORMAT "Check the code format with clang-format" ${VIOLET_BUILD_TESTS})
 
 list(APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/tools/cmake)
 
-if(NOT CONAN_EXPORTED AND VIOLET_CONAN_INSTALL)
-  include(conan)
-  conan_cmake_install(CONANFILE conanfile.py BUILD missing)
-endif()
-
-include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
-conan_basic_setup(TARGETS)
+include(conan)
+conan_cmake_run(
+  CONANFILE conanfile.py
+  BASIC_SETUP CMAKE_TARGETS
+  BUILD missing
+)
 
 add_library(violet
   src/violet/hello.cpp
