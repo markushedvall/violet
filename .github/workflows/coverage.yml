@@ -1,0 +1,33 @@
+name: Ubuntu
+
+on: [push]
+
+env:
+  CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-python@v2
+
+    - name: Install Conan
+      run: |
+          pip install conan
+          conan profile new default --detect
+          conan profile update settings.compiler.libcxx=libstdc++11 default
+
+    - name: Configure
+      run: cmake -B build -DCMAKE_BUILD_TYPE=Debug -DVIOLET_CHECK_FORMAT=OFF -DVIOLET_BUILD_WITH_COVERAGE=ON
+
+    - name: Build
+      run: cmake --build build
+
+    - name: Test
+      run: |
+          cd build
+          ctest --output-on-failure
+
+    - name: Upload coverage report
+      run: bash <(curl -s https://codecov.io/bash)

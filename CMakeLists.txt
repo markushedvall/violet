@@ -64,3 +64,8 @@ if(VIOLET_BUILD_TESTS)
   enable_testing()
   add_subdirectory(tests)
 endif()
+
+if(VIOLET_BUILD_WITH_COVERAGE)
+  target_compile_options(violet PUBLIC --coverage)
+  target_link_options(violet PUBLIC--coverage)
+endif()
