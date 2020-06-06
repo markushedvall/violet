@@ -19,7 +19,7 @@ jobs:
           conan profile update settings.compiler.libcxx=libstdc++11 default
 
     - name: Configure
-      run: cmake -B build -DCMAKE_BUILD_TYPE=Debug -DVIOLET_CHECK_FORMAT=OFF -DVIOLET_BUILD_WITH_COVERAGE=ON
+      run: cmake -B build -DCMAKE_BUILD_TYPE=Debug -DVIOLET_LINT=OFF -DVIOLET_FORMAT=OFF -DVIOLET_COVERAGE=ON
 
     - name: Build
       run: cmake --build build

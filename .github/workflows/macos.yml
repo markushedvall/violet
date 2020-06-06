@@ -14,8 +14,17 @@ jobs:
           pip install conan
           conan profile new default --detect
 
+    - name: Update Homebrew taps
+      run: brew update
+
+    - name: Install clang-format
+      run: brew install clang-format
+
+    - name: Install clang-tidy
+      run: brew install clang-tidy
+
     - name: Configure
-      run: cmake -B build -DCMAKE_BUILD_TYPE=Release -DVIOLET_CHECK_FORMAT=OFF
+      run: cmake -B build -DCMAKE_BUILD_TYPE=Release
 
     - name: Build
       run: cmake --build build

@@ -1,0 +1,4 @@
+find_program(CLANG_TIDY_EXECUTABLE clang-tidy)
+include(FindPackageHandleStandardArgs)
+find_package_handle_standard_args(ClangTidy REQUIRED_VARS CLANG_TIDY_EXECUTABLE)
+mark_as_advanced(CLANG_TIDY_EXECUTABLE)

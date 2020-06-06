@@ -5,8 +5,8 @@
 
 namespace violet {
 
-std::string hello();
+auto hello() -> std::string;
 
-}
+} // namespace violet
 
-#endif
+#endif // VIOLET_VIOLET_H

@@ -12,7 +12,7 @@ class VioletConan(ConanFile):
     options = {"shared": [True, False], "fPIC": [True, False]}
     default_options = {"shared": False, "fPIC": True}
     generators = "cmake"
-    exports_sources = "CMakeLists.txt", "LICENSE", "src/*", "include/*", "tools/cmake/*"
+    exports_sources = "CMakeLists.txt", "LICENSE", "src/*", "include/*"
 
     def config_options(self):
         if self.settings.os == "Windows":
@@ -29,7 +29,7 @@ class VioletConan(ConanFile):
 
     def build(self):
         cmake = CMake(self)
-        cmake.definitions["VIOLET_BUILD_TESTS"] = False
+        cmake.definitions["VIOLET_TEST"] = False
         cmake.configure()
         cmake.build()
 

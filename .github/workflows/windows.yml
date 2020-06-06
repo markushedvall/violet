@@ -15,10 +15,10 @@ jobs:
           conan profile new default --detect
 
     - name: Configure
-      run: cmake -B build -DCMAKE_BUILD_TYPE=Release -DVIOLET_CHECK_FORMAT=OFF
+      run: cmake -B build -DVIOLET_LINT=OFF -DVIOLET_FORMAT=OFF
 
     - name: Build
-      run: cmake --build build
+      run: cmake --build build --config Release
 
     - name: Test
       run: |

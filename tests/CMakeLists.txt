@@ -10,5 +10,7 @@ set_target_properties(violet_test PROPERTIES
 
 target_link_libraries(violet_test PRIVATE ${PROJECT_NAME} CONAN_PKG::doctest)
 
+violet_lint(TARGET violet_test)
+
 include(${CMAKE_BINARY_DIR}/doctest.cmake)
 doctest_discover_tests(violet_test)
