@@ -17,11 +17,11 @@ jobs:
     - name: Update Homebrew taps
       run: brew update
 
-    - name: Install clang-format
-      run: brew install clang-format
-
-    - name: Install clang-tidy
-      run: brew install clang-tidy
+    - name: Install clang-format & clang-tidy
+      run: |
+          brew install llvm
+          ln -s "$(brew --prefix llvm)/bin/clang-format" "/usr/local/bin/clang-format"
+          ln -s "$(brew --prefix llvm)/bin/clang-tidy" "/usr/local/bin/clang-tidy"
 
     - name: Configure
       run: cmake -B build -DCMAKE_BUILD_TYPE=Release
