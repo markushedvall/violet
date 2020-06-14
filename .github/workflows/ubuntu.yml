@@ -16,7 +16,7 @@ jobs:
           conan profile update settings.compiler.libcxx=libstdc++11 default
 
     - name: Configure
-      run: cmake -B build -DCMAKE_BUILD_TYPE=Release
+      run: cmake -B build -DCMAKE_BUILD_TYPE=Release -DVIOLET_LINT=OFF -DVIOLET_FORMAT=OFF
 
     - name: Build
       run: cmake --build build
