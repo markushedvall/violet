@@ -1,4 +1,4 @@
-name: macOS
+name: Lint
 
 on: [push]
 
@@ -24,12 +24,7 @@ jobs:
           ln -s "$(brew --prefix llvm)/bin/clang-tidy" "/usr/local/bin/clang-tidy"
 
     - name: Configure
-      run: cmake -B build -DCMAKE_BUILD_TYPE=Release -DVIOLET_LINT=OFF -DVIOLET_FORMAT=OFF -DVIOLET_WARNINGS_AS_ERRORS=ON
+      run: cmake -B build -DCMAKE_BUILD_TYPE=Debug -DVIOLET_WARNINGS_AS_ERRORS=ON
 
     - name: Build
       run: cmake --build build
-
-    - name: Test
-      run: |
-          cd build
-          ctest --output-on-failure
