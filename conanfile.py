@@ -20,12 +20,12 @@ class VioletConan(ConanFile):
 
     def build_requirements(self):
         if not self.in_local_cache:
-            self.build_requires("doctest/2.3.7")
+            self.build_requires("catch2/2.12.2")
 
     def imports(self):
         if not self.in_local_cache:
-            self.copy("*/doctest.cmake", keep_path =False)
-            self.copy("*/doctestAddTests.cmake", keep_path =False)
+            self.copy("*/Catch.cmake", keep_path =False)
+            self.copy("*/CatchAddTests.cmake", keep_path =False)
 
     def build(self):
         cmake = CMake(self)

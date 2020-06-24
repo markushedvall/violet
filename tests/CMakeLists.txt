@@ -8,9 +8,9 @@ set_target_properties(violet_test PROPERTIES
   CXX_STANDARD_REQUIRED YES
 )
 
-target_link_libraries(violet_test PRIVATE ${PROJECT_NAME} CONAN_PKG::doctest)
+target_link_libraries(violet_test PRIVATE ${PROJECT_NAME} CONAN_PKG::catch2)
 
 violet_lint(TARGET violet_test)
 
-include(${CMAKE_BINARY_DIR}/doctest.cmake)
-doctest_discover_tests(violet_test)
+include(${CMAKE_BINARY_DIR}/Catch.cmake)
+catch_discover_tests(violet_test)
