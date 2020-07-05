@@ -8,6 +8,9 @@ option(VIOLET_WARNINGS_AS_ERRORS "All warnings will be treated as errors" OFF)
 option(VIOLET_FIX "Try to fix format and lint problems" OFF)
 option(VIOLET_COVERAGE "Build Violet with coverage" OFF)
 
+# Generate compile_commands.json
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
 if(CONAN_EXPORTED)
   include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
   conan_basic_setup()
@@ -31,10 +34,7 @@ add_library(violet
   src/violet/hello.cpp
 )
 
-set_target_properties(violet PROPERTIES
-  CXX_STANDARD 11
-  CXX_STANDARD_REQUIRED YES
-)
+target_compile_features(violet PUBLIC cxx_std_11)
 
 target_include_directories(violet
   PUBLIC
@@ -44,6 +44,7 @@ target_include_directories(violet
     ${PROJECT_SOURCE_DIR}/src
 )
 
+# Set compiler options
 if(CMAKE_CXX_COMPILER_ID MATCHES "Clang" OR CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
   target_compile_options(violet PUBLIC -Wall -pedantic -Wextra)
   if (VIOLET_WARNINGS_AS_ERRORS)
