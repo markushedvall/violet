@@ -30,16 +30,10 @@ function(violet_lint)
       endif()
     endforeach()
 
-    set(clangTidyIncludes
-      ${CONAN_INCLUDE_DIRS}
-      ${CONAN_INCLUDE_DIRS_DEBUG}
-      ${CONAN_INCLUDE_DIRS_RELEASE}
-      ${PROJECT_SOURCE_DIR}/include
-    )
-    list(TRANSFORM clangTidyIncludes PREPEND "-I")
-
     add_custom_command(TARGET ${VIOLET_LINT_TARGET} POST_BUILD
-      COMMAND ${clangTidyCommand} ${sources} -- ${clangTidyIncludes}
+      COMMAND_EXPAND_LISTS
+      COMMAND ${clangTidyCommand} ${sources} --
+              "-I$<JOIN:$<TARGET_PROPERTY:${VIOLET_LINT_TARGET},INCLUDE_DIRECTORIES>,;-I>"
     )
   endif()
 endfunction()

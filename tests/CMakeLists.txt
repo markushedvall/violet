@@ -3,7 +3,7 @@ add_executable(violet_test
   ${PROJECT_SOURCE_DIR}/src/violet/hello.test.cpp
 )
 
-target_link_libraries(violet_test PRIVATE ${PROJECT_NAME} CONAN_PKG::catch2)
+target_link_libraries(violet_test PRIVATE violet CONAN_PKG::catch2)
 
 violet_lint(TARGET violet_test)
 

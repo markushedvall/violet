@@ -13,7 +13,7 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 if(CONAN_EXPORTED)
   include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
-  conan_basic_setup()
+  conan_basic_setup(TARGETS)
 else()
   include(tools/cmake/conan.cmake)
   conan_cmake_run(
