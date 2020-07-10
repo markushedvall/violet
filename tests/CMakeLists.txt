@@ -3,7 +3,7 @@ add_executable(violet_test
   ${PROJECT_SOURCE_DIR}/src/violet/hello.test.cpp
 )
 
-find_package(catch2 CONFIG REQUIRED)
+find_package(Catch2 CONFIG REQUIRED)
 
 target_link_libraries(violet_test PRIVATE violet Catch2::Catch2)
 
