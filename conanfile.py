@@ -11,7 +11,7 @@ class VioletConan(ConanFile):
     settings = "os", "compiler", "build_type", "arch"
     options = {"shared": [True, False], "fPIC": [True, False]}
     default_options = {"shared": False, "fPIC": True}
-    generators = "cmake"
+    generators = "cmake_find_package_multi"
     exports_sources = "CMakeLists.txt", "LICENSE", "src/*", "include/*"
 
     def config_options(self):

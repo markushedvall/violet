@@ -11,15 +11,16 @@ option(VIOLET_COVERAGE "Build Violet with coverage" OFF)
 # Generate compile_commands.json
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-if(CONAN_EXPORTED)
-  include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
-  conan_basic_setup(TARGETS)
-else()
+list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_BINARY_DIR})
+list(APPEND CMAKE_PREFIX_PATH ${CMAKE_CURRENT_BINARY_DIR})
+
+if(NOT CONAN_EXPORTED)
   include(tools/cmake/conan.cmake)
   conan_cmake_run(
     CONANFILE conanfile.py
-    BASIC_SETUP CMAKE_TARGETS
+    GENERATORS cmake_find_package_multi
     BUILD missing
+    NO_LOAD
   )
 endif()
 
