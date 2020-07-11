@@ -39,7 +39,8 @@ add_library(violet
 
 target_compile_features(violet PUBLIC cxx_std_17)
 
-target_link_libraries(violet PUBLIC CONAN_PKG::glfw)
+find_package(glfw CONFIG REQUIRED)
+target_link_libraries(violet PUBLIC glfw::glfw)
 
 target_include_directories(violet
   PUBLIC
