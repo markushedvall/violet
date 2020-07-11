@@ -2,7 +2,7 @@
 
 namespace violet {
 
-auto hello() -> std::string {
+std::string hello() {
   return "Hello, World!";
 }
 

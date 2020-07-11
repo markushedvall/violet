@@ -9,6 +9,7 @@ llvm-include-order,
 llvm-namespace-comment,
 misc-*,
 modernize-*,
+-modernize-use-trailing-return-type,
 performance-*,
 readability-*,
 '

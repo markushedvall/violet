@@ -5,7 +5,7 @@
 
 namespace violet {
 
-auto hello() -> std::string;
+std::string hello();
 
 } // namespace violet
 
