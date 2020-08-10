@@ -26,6 +26,4 @@ void onLog(LogLevel level, const char* msg) {
 
 } // namespace
 
-violet::AppConf violet::config() {
-  return {violet::AppFactory<HelloWorld>(), onLog};
-}
+VIOLET_RUN_APP(HelloWorld, onLog)

@@ -4,7 +4,7 @@ namespace violet {
 
 LogFunction Logger::log_func_{};
 
-void Logger::init(const LogFunction& log_func) {
+void Logger::set_log_function(const LogFunction& log_func) {
   log_func_ = log_func;
 }
 

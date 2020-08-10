@@ -4,36 +4,36 @@
 #define GLFW_INCLUDE_NONE
 #include <GLFW/glfw3.h>
 
-#include <cstdlib>
+namespace violet {
 
-using violet::Logger;
+static constexpr int default_width = 640;
+static constexpr int default_height = 480;
 
-int main() {
-  auto config = violet::config();
-  Logger::init(config.log);
+void run_app(const CreateAppFunction& create_app_function, const LogFunction& log_function) {
+  Logger::set_log_function(log_function);
 
-  glfwSetErrorCallback([](int err, const char* msg) { Logger::err(msg); });
+  glfwSetErrorCallback([](int /*err*/, const char* msg) { Logger::err(msg); });
 
   Logger::trace("Initializing GLFW");
   auto initialized = glfwInit();
-  if (!initialized) {
-    return EXIT_FAILURE;
+  if (initialized == GLFW_FALSE) {
+    return;
   }
 
   Logger::trace("Creating window");
   glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
-  auto window = glfwCreateWindow(640, 480, "", nullptr, nullptr);
+  auto* window = glfwCreateWindow(default_width, default_height, "", nullptr, nullptr);
   if (window == nullptr) {
     glfwTerminate();
-    return EXIT_FAILURE;
+    return;
   }
 
   {
     Logger::trace("Creating application");
-    auto app = config.app();
+    auto app = create_app_function();
 
     Logger::trace("Entering main loop");
-    while (!glfwWindowShouldClose(window)) {
+    while (glfwWindowShouldClose(window) == GLFW_FALSE) {
       app->tick();
       glfwPollEvents();
     }
@@ -44,6 +44,6 @@ int main() {
 
   Logger::trace("Terminating GLFW");
   glfwTerminate();
-
-  return EXIT_SUCCESS;
 }
+
+} // namespace violet

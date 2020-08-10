@@ -12,16 +12,19 @@ namespace violet {
 class App {
 public:
   virtual void tick() = 0;
-  virtual ~App() {}
+  virtual ~App() = default;
 
 protected:
   App() = default;
+  App(const App&) = default;
+  App& operator=(const App&) = default;
+  App(App&&) = default;
+  App& operator=(App&&) = default;
 };
 
-struct AppConf {
-  std::function<std::unique_ptr<App>()> app;
-  LogFunction log;
-};
+using CreateAppFunction = std::function<std::unique_ptr<App>()>;
+
+void run_app(const CreateAppFunction& create_app_function, const LogFunction& log_function);
 
 template<typename T>
 class AppFactory {
@@ -32,8 +35,12 @@ public:
   }
 };
 
-AppConf config();
-
 } // namespace violet
+
+// NOLINTNEXTLINE - cppcoreguidelines-macro-usage
+#define VIOLET_RUN_APP(APP, LOG_FUNCTION) \
+  int main() { \
+    violet::run_app(violet::AppFactory<APP>(), LOG_FUNCTION); \
+  }
 
 #endif

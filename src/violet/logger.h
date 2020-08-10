@@ -9,7 +9,7 @@ namespace violet {
 
 class Logger final {
 public:
-  static void init(const LogFunction& log_func);
+  static void set_log_function(const LogFunction& log_func);
 
   static void trace(const char* msg);
 

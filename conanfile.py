@@ -21,7 +21,7 @@ class VioletConan(ConanFile):
     def requirements(self):
         if (self.settings.os == "Windows" or self.settings.os == "Linux" or
             self.settings.os == "Macos"):
-            self.requires("glfw/3.3.2@bincrafters/stable")
+            self.requires("glfw/3.3.2")
 
     def build_requirements(self):
         if not self.in_local_cache:
