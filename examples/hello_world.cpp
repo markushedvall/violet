@@ -12,10 +12,6 @@ public:
   HelloWorld() {
     std::cout << "Hello, World!" << std::endl;
   }
-
-  void tick() override {
-    // Do nothing
-  }
 };
 
 void onLog(LogLevel level, const char* msg) {

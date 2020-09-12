@@ -11,7 +11,7 @@ namespace violet {
 
 class App {
 public:
-  virtual void tick() = 0;
+  virtual void tick() {};
   virtual ~App() = default;
 
 protected:
