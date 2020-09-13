@@ -4,6 +4,7 @@ on: [push]
 
 env:
   CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+  CONAN_SYSREQUIRES_MODE: enabled
 
 jobs:
   build:
