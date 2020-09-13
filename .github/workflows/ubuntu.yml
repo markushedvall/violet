@@ -2,17 +2,15 @@ name: Ubuntu
 
 on: [push]
 
+env:
+  CONAN_SYSREQUIRES_MODE: enabled
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
     - uses: actions/setup-python@v2
-
-    - name: Install OpenGL
-      run: |
-          sudo apt-get update
-          sudo apt-get install libgl1-mesa-dev
 
     - name: Install Conan
       run: |
