@@ -10,7 +10,9 @@ jobs:
     - uses: actions/setup-python@v2
 
     - name: Install OpenGL
-      run: sudo apt-get install libgl1-mesa-dev
+      run: |
+          sudo apt-get update
+          sudo apt-get install libgl1-mesa-dev
 
     - name: Install Conan
       run: |
