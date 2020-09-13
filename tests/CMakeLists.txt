@@ -6,6 +6,7 @@ add_executable(violet_test
 find_package(Catch2 CONFIG REQUIRED)
 
 target_link_libraries(violet_test PRIVATE violet Catch2::Catch2)
+target_include_directories(violet_test PRIVATE ${PROJECT_SOURCE_DIR}/src)
 
 violet_lint(TARGET violet_test)
 
