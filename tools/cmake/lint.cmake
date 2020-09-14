@@ -4,7 +4,7 @@ function(violet_lint)
   set(oneValueArgs TARGET)
   cmake_parse_arguments(VIOLET_LINT "${options}" "${oneValueArgs}" "${multiValueArgs}" ${ARGN})
 
-  find_package(ClangTidy REQUIRED)
+  find_program(clangTidy clang-tidy REQUIRED)
 
   if(VIOLET_FIX)
     set(fixFlag --fix)
@@ -14,7 +14,7 @@ function(violet_lint)
     set(werror --warnings-as-errors=*)
   endif()
 
-  set(clangTidyCommand "${CLANG_TIDY_EXECUTABLE}" ${fixFlag} ${werror} --quiet)
+  set(clangTidyCommand "${clangTidy}" ${fixFlag} ${werror} --quiet)
 
   if(CMAKE_GENERATOR MATCHES "Makefiles" OR CMAKE_GENERATOR MATCHES "Ninja")
     set_property(TARGET ${VIOLET_LINT_TARGET} PROPERTY CXX_CLANG_TIDY ${clangTidyCommand})

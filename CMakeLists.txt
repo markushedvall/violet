@@ -75,7 +75,7 @@ if(VIOLET_FORMAT)
     examples/*.h
   )
   include(tools/cmake/format.cmake)
-  violet_format(SOURCES ${FORMAT_SOURCES})
+  violet_format(TARGET violet SOURCES ${FORMAT_SOURCES})
 endif()
 
 if(VIOLET_TEST)
