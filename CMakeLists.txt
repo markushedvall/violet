@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.12)
+cmake_minimum_required(VERSION 3.14)
 project(violet LANGUAGES CXX)
 
 option(VIOLET_EXAMPLES "Build the violet examples" ON)
