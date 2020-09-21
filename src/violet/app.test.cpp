@@ -42,7 +42,7 @@ TEST_CASE("App can run being constructed, ticked and destructed", "[App]") {
         app->mock = std::move(owner);
         return app;
       },
-      [](auto, auto) {});
+      [](auto, auto msg) { std::cout << msg << std::endl; });
 }
 
 } // namespace
