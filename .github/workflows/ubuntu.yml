@@ -4,7 +4,7 @@ on: [push]
 
 env:
   CONAN_SYSREQUIRES_MODE: enabled
-  DISPLAY: ':0'
+  DISPLAY: ':99'
 
 jobs:
   build:
@@ -24,6 +24,9 @@ jobs:
 
     - name: Build
       run: cmake --build build
+
+    - name: Setup headless environment
+      run: Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
 
     - name: Test
       run: |
