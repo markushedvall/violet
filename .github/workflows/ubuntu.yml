@@ -4,6 +4,7 @@ on: [push]
 
 env:
   CONAN_SYSREQUIRES_MODE: enabled
+  DISPLAY: ':0'
 
 jobs:
   build:
