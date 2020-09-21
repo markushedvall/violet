@@ -1,7 +1,7 @@
+#include "logger.h"
+
 #include <catch2/catch.hpp>
 #include <catch2/trompeloeil.hpp>
-
-#include "logger.h"
 
 namespace {
 

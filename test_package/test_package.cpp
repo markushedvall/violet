@@ -6,12 +6,13 @@ namespace {
 
 using violet::App;
 using violet::LogLevel;
+using violet::TickResult;
 
 class TestPackage final : public App {
 public:
-  void tick() override {
-    std::cout << "Tick! Exiting..." << std::endl;
-    exit(0);
+  TickResult tick() override {
+    std::cout << "Tick! Terminating..." << std::endl;
+    return TickResult::terminate;
   }
 };
 

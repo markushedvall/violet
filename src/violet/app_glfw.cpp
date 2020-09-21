@@ -33,8 +33,9 @@ void run_app(const CreateAppFunction& create_app_function, const LogFunction& lo
     auto app = create_app_function();
 
     Logger::trace("Entering main loop");
-    while (glfwWindowShouldClose(window) == GLFW_FALSE) {
-      app->tick();
+    auto tick_result{TickResult::ok};
+    while (glfwWindowShouldClose(window) == GLFW_FALSE && tick_result == TickResult::ok) {
+      tick_result = app->tick();
       glfwPollEvents();
     }
   }

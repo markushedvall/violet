@@ -9,9 +9,16 @@
 
 namespace violet {
 
+enum class TickResult {
+  ok,
+  terminate,
+};
+
 class App {
 public:
-  virtual void tick(){};
+  virtual TickResult tick() {
+    return TickResult::ok;
+  };
   virtual ~App() = default;
 
 protected:

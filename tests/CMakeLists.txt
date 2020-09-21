@@ -1,5 +1,6 @@
 add_executable(violet_test
   main.cpp
+  ${PROJECT_SOURCE_DIR}/src/violet/app.test.cpp
   ${PROJECT_SOURCE_DIR}/src/violet/logger.test.cpp
 )
 

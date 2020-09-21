@@ -12,7 +12,7 @@ enum class LogLevel {
   warning = 3,
   error = 4,
   critical = 5,
-  none = 6
+  none = 6,
 };
 
 using LogFunction = std::function<void(LogLevel, const char*)>;
