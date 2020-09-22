@@ -1,0 +1,21 @@
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+trim_trailing_whitespace = true
+insert_final_newline = true
+indent_style = space
+max_line_length = 100
+
+[*.{cpp,h}]
+indent_size = 2
+
+[{CMakeLists.txt,*.cmake}]
+indent_size = 2
+
+[*.{py}]
+indent_size = 4
+
+[*.{yml}]
+indent_size = 2

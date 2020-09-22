@@ -1,0 +1,20 @@
+---
+Checks: '-*,
+bugprone-*,
+clang-analyzer-*,
+cppcoreguidelines-*,
+google-*,
+hicpp-*,
+llvm-include-order,
+llvm-namespace-comment,
+misc-*,
+modernize-*,
+-modernize-use-trailing-return-type,
+performance-*,
+readability-*,
+'
+HeaderFilterRegex: '.*/violet/.*'
+AnalyzeTemporaryDtors: false
+FormatStyle: file
+CheckOptions:
+...

@@ -1,0 +1,26 @@
+name: macOS
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-python@v2
+
+    - name: Install Conan
+      run: |
+          pip install conan
+          conan profile new default --detect
+
+    - name: Configure
+      run: cmake -B build -DCMAKE_BUILD_TYPE=Release -DVIOLET_LINT=OFF -DVIOLET_FORMAT=OFF -DVIOLET_WARNINGS_AS_ERRORS=ON
+
+    - name: Build
+      run: cmake --build build
+
+    - name: Test
+      run: |
+          cd build
+          ctest --output-on-failure
