@@ -28,7 +28,7 @@ jobs:
     - name: Test
       run: |
           cd build
-          ctest --output-on-failure
+          xvfb-run --auto-servernum ctest --output-on-failure
 
     - name: Upload coverage report
       run: bash <(curl -s https://codecov.io/bash)
