@@ -51,7 +51,7 @@ target_include_directories(violet
 )
 
 # Set compiler options
-if(CMAKE_CXX_COMPILER_ID MATCHES "Clang" OR CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+if(CMAKE_CXX_COMPILER_ID MATCHES Clang OR CMAKE_CXX_COMPILER_ID STREQUAL GNU)
   target_compile_options(violet PUBLIC -Wall -pedantic -Wextra)
   if (VIOLET_WARNINGS_AS_ERRORS)
     target_compile_options(violet PUBLIC -Werror)
@@ -60,12 +60,15 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "Clang" OR CMAKE_CXX_COMPILER_ID STREQUAL "GNU"
     target_compile_options(violet PUBLIC --coverage)
     target_link_options(violet PUBLIC --coverage)
   endif()
-elseif(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
+elseif(CMAKE_CXX_COMPILER_ID STREQUAL MSVC)
   target_compile_options(violet PUBLIC /permissive /W4)
   if (VIOLET_WARNINGS_AS_ERRORS)
     target_compile_options(violet PUBLIC /WX)
   endif()
 endif()
+
+# Ignore missing PDB files for MSVC
+target_link_options(violet PUBLIC $<$<CXX_COMPILER_ID:MSVC>:/ignore:4099>)
 
 violet_lint(TARGET violet)
 
