@@ -30,7 +30,7 @@ private:
   bool initilized_;
 };
 
-class GlfwWindowDeleter {
+class GlfwWindowDeleter final {
 public:
   void operator()(GLFWwindow* window) {
     glfwDestroyWindow(window);
