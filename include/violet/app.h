@@ -38,7 +38,7 @@ class AppFactory {
 public:
   std::unique_ptr<App> operator()() const {
     static_assert(std::is_default_constructible<T>::value, "T must be default constructible");
-    return std::unique_ptr<T>(new T());
+    return std::make_unique<T>();
   }
 };
 

@@ -1,6 +1,6 @@
-#include <iostream>
-
 #include <violet/violet.h>
+
+#include <iostream>
 
 namespace {
 

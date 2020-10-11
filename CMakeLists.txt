@@ -91,6 +91,6 @@ if(VIOLET_TEST)
   add_subdirectory(tests)
 endif()
 
-if (VIOLET_EXAMPLES)
+if(VIOLET_EXAMPLES)
   add_subdirectory(examples)
 endif()
