@@ -6,6 +6,6 @@ conan_basic_setup(TARGETS)
 
 add_executable(test_package test_package.cpp)
 
-target_compile_features(violet PUBLIC cxx_std_17)
+target_compile_features(test_package PUBLIC cxx_std_17)
 
 target_link_libraries(test_package PRIVATE CONAN_PKG::violet)
