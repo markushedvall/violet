@@ -11,7 +11,7 @@ jobs:
 
     - name: Install Conan
       run: |
-          pip install conan
+          pip install conan==1.29.2
           conan profile new default --detect
 
     - name: Configure
