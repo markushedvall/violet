@@ -4,7 +4,7 @@ add_executable(violet_test
   ${PROJECT_SOURCE_DIR}/src/violet/logger.test.cpp
 )
 
-find_package(Catch2 CONFIG REQUIRED)
+find_package(Catch2 REQUIRED)
 
 include(FetchContent)
 FetchContent_Declare(

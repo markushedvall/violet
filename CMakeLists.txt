@@ -12,8 +12,8 @@ option(VIOLET_COVERAGE "Build Violet with coverage" OFF)
 # Generate compile_commands.json
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_BINARY_DIR})
-list(APPEND CMAKE_PREFIX_PATH ${CMAKE_CURRENT_BINARY_DIR})
+list(PREPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_BINARY_DIR})
+list(PREPEND CMAKE_PREFIX_PATH ${CMAKE_CURRENT_BINARY_DIR})
 
 if(NOT CONAN_EXPORTED)
   include(tools/cmake/conan.cmake)
@@ -39,7 +39,7 @@ add_library(violet
 
 target_compile_features(violet PUBLIC cxx_std_17)
 
-find_package(glfw CONFIG REQUIRED)
+find_package(glfw REQUIRED)
 target_link_libraries(violet PUBLIC glfw::glfw)
 
 target_include_directories(violet
