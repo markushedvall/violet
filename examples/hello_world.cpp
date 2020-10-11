@@ -6,13 +6,11 @@ namespace {
 
 using violet::App;
 using violet::LogLevel;
-using violet::TickResult;
 
-class TestPackage final : public App {
+class HelloWorld final : public App {
 public:
-  TickResult tick() override {
-    std::cout << "Tick! Terminating..." << std::endl;
-    return TickResult::terminate;
+  HelloWorld() {
+    std::cout << "Hello, World!" << std::endl;
   }
 };
 
@@ -24,6 +22,4 @@ void onLog(LogLevel level, const char* msg) {
 
 } // namespace
 
-int main() {
-  violet::run_app(violet::AppFactory<TestPackage>(), onLog);
-}
+VIOLET_RUN_APP(HelloWorld, onLog)

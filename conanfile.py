@@ -18,6 +18,11 @@ class VioletConan(ConanFile):
         if self.settings.os == "Windows":
             del self.options.fPIC
 
+    def requirements(self):
+        if (self.settings.os == "Windows" or self.settings.os == "Linux" or
+            self.settings.os == "Macos"):
+            self.requires("glfw/3.3.2")
+
     def build_requirements(self):
         if not self.in_local_cache:
             self.build_requires("catch2/2.12.2")
@@ -30,6 +35,7 @@ class VioletConan(ConanFile):
     def build(self):
         cmake = CMake(self)
         cmake.definitions["VIOLET_TEST"] = False
+        cmake.definitions["VIOLET_EXAMPLES"] = False
         cmake.configure()
         cmake.build()
 
